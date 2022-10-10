@@ -13,9 +13,6 @@ gem 'roda', require: 'roda'
 gem 'config'
 gem 'i18n', require: 'i18n'
 
-gem 'sequel'
-gem 'sequel_pg', require: 'sequel'
-
 gem 'activesupport', require: false
 
 gem 'dry-initializer'

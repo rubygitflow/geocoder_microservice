@@ -7,7 +7,8 @@ class GeocoderMicroservice < Roda
   Unreloader.require 'app/helpers'
   Unreloader.require 'app/serializers'
 
-  include ::ApiErrors
+  include Validations
+  include ApiErrors
 
   attr_reader :dry_validation_response
 
@@ -17,7 +18,7 @@ class GeocoderMicroservice < Roda
 
   # https://roda.jeremyevans.net/documentation.html
   plugin :environments
-  plugin :hash_routes
+  # plugin :hash_routes
   plugin :typecast_params
   plugin :json
 
@@ -32,25 +33,12 @@ class GeocoderMicroservice < Roda
   # https://roda.jeremyevans.net/rdoc/classes/Roda/RodaPlugins/ErrorHandler.html
   plugin :error_handler do |e|
     case e
-    # https://www.rubydoc.info/gems/sequel/4.8.0/Sequel
-    # https://sequel.jeremyevans.net/rdoc/
-    when Sequel::NoMatchingRow
-      response.status = 404
-      error_response e.message, meta: { 'meta' => I18n.t(:not_found, scope: 'api.errors') }
-    when Sequel::UniqueConstraintViolation
-      response.status = 422
-      error_response e.message, meta: { 'meta' => I18n.t(:not_unique, scope: 'api.errors') }
     when Roda::RodaPlugins::TypecastParams::Error
       response.status = 422
       error_response e.message, meta: { 'meta' => I18n.t(:missing_parameters, scope: 'api.errors') }
     when KeyError
       response.status = 422
       error_response e.message, meta: { 'meta' => I18n.t(:missing_parameters, scope: 'api.errors') }
-    # when NameError # Dry::Validation::Result  -  #  3-d catch
-    #   response.status = 422
-    #   key = @dry_validation_response.keys.first
-    #   value = I18n.t(:blank, scope: "model.errors.reference_book.#{key}", default: @dry_validation_response[key])
-    #   error_response({ key => value })
     else
       response.status = 500
       error_response e.message, meta: { 'meta' => e.class }
@@ -67,8 +55,23 @@ class GeocoderMicroservice < Roda
 
   route do |r|
     r.root do
-      { status: :ok, message: I18n.t('hello'), page_size: Settings.pagination.page_size }
+      geocoder_params = validate_with!(GeocoderParamsContract)
+      result = Geocoder::SearchService.call(*geocoder_params.to_h.values)
+
+      if result.present?
+        response.status = 200
+        { data: {
+            lat: result[0],
+            lon: result[1]
+          } 
+        }
+      else
+        response.status = 422
+        { data: {
+            errors: I18n.t(:not_found, scope: 'api.errors')
+          }
+        }
+      end
     end
-    # r.hash_routes
   end
 end

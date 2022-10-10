@@ -46,46 +46,6 @@ RSpec.describe ErrorSerializer do
     end
   end
 
-  describe 'from_model' do
-    let(:model) do
-      instance_double(
-        'model',
-        errors: {
-          blue: ['не может быть пустым'],
-          green: ['не может быть пустым', 'имеет непредусмотренное значение']
-        }
-      )
-    end
-    let(:message) do
-      {
-        errors: [
-          {
-            detail: %(не может быть пустым),
-            source: {
-              pointer: '/data/attributes/blue'
-            }
-          },
-          {
-            detail: %(не может быть пустым),
-            source: {
-              pointer: '/data/attributes/green'
-            }
-          },
-          {
-            detail: %(имеет непредусмотренное значение),
-            source: {
-              pointer: '/data/attributes/green'
-            }
-          }
-        ]
-      }
-    end
-
-    it 'returns errors representation' do
-      expect(error_serializer.from_model(model)).to eq(message)
-    end
-  end
-
   describe 'from_hash' do
     context 'with single key' do
       let(:source) { { 'key': 'error' } }

@@ -21,8 +21,6 @@ module ApplicationLoader
   end
 
   def init_db
-    require_file 'config/initializers/db'
-    require_file 'config/initializers/models'
   end
 
   def require_app

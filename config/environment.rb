@@ -18,7 +18,7 @@ if dev
   logger = Logger.new($stdout)
 end
 
-Unreloader = Rack::Unreloader.new(subclasses: %w[Roda Sequel::Model], logger: logger, reload: dev) { GeocoderMicroservice }
+Unreloader = Rack::Unreloader.new(subclasses: %w[Roda], logger: logger, reload: dev) { GeocoderMicroservice }
 
 require_relative 'application_loader'
 ApplicationLoader.load_app!
