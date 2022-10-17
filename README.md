@@ -45,8 +45,8 @@ $ RACK_ENV=test bin/console
 ## HTTP-requests to the app
 Use the URL port setting in `config/puma.rb` to manage multiple microservices in the same environment.
 ```bash
-$ curl --url "http://localhost:3002/?city=Москва" -v
-$ http -f get ":3002/" "city=Москва"
+$ curl --url "http://localhost:3002/?city=Moscow" -v
+$ http -f get ":3002/" "city=Moscow"
 ```
 
 ## Run tests

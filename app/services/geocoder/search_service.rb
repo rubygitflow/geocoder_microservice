@@ -5,7 +5,7 @@ require 'csv'
 module Geocoder
   class SearchService
     extend Dry::Initializer[undefined: false]
-    
+
     DATA_PATH = 'db/data/city.csv'
 
     param :city
@@ -30,12 +30,11 @@ module Geocoder
     def load_data!
       path = File.join(root, DATA_PATH)
 
-      @data = CSV.read(path, headers: true).inject({}) do |result, row|
+      @data = CSV.read(path, headers: true).each_with_object({}) do |row, result|
         city = row['city']
         lat = row['geo_lat'].to_f
         lon = row['geo_lon'].to_f
         result[city] = [lat, lon]
-        result
       end
     end
 

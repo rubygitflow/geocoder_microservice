@@ -8,9 +8,6 @@ class GeocoderMicroservice < Roda
   Unreloader.require 'app/serializers'
 
   include Validations
-  include ApiErrors
-
-  attr_reader :dry_validation_response
 
   def self.root
     ApplicationLoader.root
@@ -31,18 +28,8 @@ class GeocoderMicroservice < Roda
   end
 
   # https://roda.jeremyevans.net/rdoc/classes/Roda/RodaPlugins/ErrorHandler.html
-  plugin :error_handler do |e|
-    case e
-    when Roda::RodaPlugins::TypecastParams::Error
-      response.status = 422
-      error_response e.message, meta: { 'meta' => I18n.t(:missing_parameters, scope: 'api.errors') }
-    when KeyError
-      response.status = 422
-      error_response e.message, meta: { 'meta' => I18n.t(:missing_parameters, scope: 'api.errors') }
-    else
-      response.status = 500
-      error_response e.message, meta: { 'meta' => e.class }
-    end
+  plugin :error_handler do |_e|
+    request.redirect '../app/routes/errors_handler.rb'
   end
 
   # use Rack::Session::Cookie, secret: 'some_nice_long_random_string_DSKJH4378EYR7EGKUFH', key: '_roda_app_session'
@@ -61,16 +48,14 @@ class GeocoderMicroservice < Roda
       if result.present?
         response.status = 200
         { data: {
-            lat: result[0],
-            lon: result[1]
-          } 
-        }
+          lat: result[0],
+          lon: result[1]
+        } }
       else
         response.status = 422
         { data: {
-            errors: I18n.t(:not_found, scope: 'api.errors')
-          }
-        }
+          errors: I18n.t(:not_found, scope: 'api.errors')
+        } }
       end
     end
   end
