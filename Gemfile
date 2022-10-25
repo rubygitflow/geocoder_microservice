@@ -4,19 +4,18 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-gem 'puma'
 gem 'rake'
 
-gem 'rack-unreloader', require: 'rack/unreloader'
-gem 'roda', require: 'roda'
-
 gem 'config'
+gem 'fast_jsonapi'
 gem 'i18n', require: 'i18n'
 
 gem 'activesupport', require: false
 
 gem 'dry-initializer'
 gem 'dry-validation'
+
+gem 'bunny'
 
 group :development do
   gem 'pry'
@@ -28,8 +27,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner-sequel'
   gem 'factory_bot'
-  gem 'rack-test'
   gem 'rspec'
 end

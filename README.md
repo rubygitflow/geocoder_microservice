@@ -3,7 +3,7 @@ Geocoder microservice from Ruby Microservices course
 
 It's set up so you can clone this repository and base your application on it:
 ```bash
-$ git clone git@github.com:Oreol-Group/roda_sequel_rspec_config.git my_app && cd my_app && rake "setup[MyApp]"
+$ git clone –single-branch –branch rabbitmq_asynchronous git@github.com:rubygitflow/geocoder_microservice.git my_app && cd my_app
 ```
 Initialize and configure a new Git repository (you need to have a [personal access token](https://github.com/settings/tokens)):
 ```bash
@@ -33,20 +33,17 @@ $ bundle install
 You can either set up configuration into `config/initializers/config.rb`, `config/settings/*.yml` and `config/settings.yml` or `config/settings.local.yml` before running
 
 ```bash
-$ bin/puma
 $ bin/console
 ```
 or run the application with modified configuration using environment variables as well
 ```bash
-$ RACK_ENV=test bin/puma
 $ RACK_ENV=test bin/console
 ```
 
 ## HTTP-requests to the app
 Use the URL port setting in `config/puma.rb` to manage multiple microservices in the same environment.
 ```bash
-$ curl --url "http://localhost:3002/?city=Moscow" -v
-$ http -f get ":3002/" "city=Moscow"
+$ 
 ```
 
 ## Run tests
@@ -61,5 +58,4 @@ $ bin/rake --tasks
 ```
 
 ## Author
-* it.Architect https://github.com/Oreol-Group/roda_sequel_rspec_config
-* Inspired by [Jeremy Evans](https://github.com/jeremyevans/roda-sequel-stack) and [Evgeniy Fateev](https://github.com/psylone/ads-microservice)
+* it.Architect https://github.com/Oreol-Group

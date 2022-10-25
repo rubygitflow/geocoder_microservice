@@ -3,7 +3,7 @@
 
 require_relative '../config/environment'
 
-puts "Loading #{ENV['RACK_ENV']} environment (Roda #{Roda::RodaVersion})"
+puts "Loading #{ENV['RACK_ENV']} environment"
 
 require 'irb'
 IRB.start(__FILE__)
