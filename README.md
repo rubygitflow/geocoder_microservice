@@ -3,7 +3,7 @@ Geocoder microservice from Ruby Microservices course
 
 It's set up so you can clone this repository and base your application on it:
 ```bash
-$ git clone git@github.com:rubygitflow/geocoder_microservice.git ramq_app --single-branch --branch rabbitmq_asynchronous && cd ramq_app && rm -r -f .git/
+$ git clone git@github.com:rubygitflow/geocoder_microservice.git my_app --single-branch --branch rabbitmq_asynchronous && cd my_app && rm -r -f .git/
 ```
 Initialize and configure a new Git repository (you need to have a [personal access token](https://github.com/settings/tokens)):
 ```bash
