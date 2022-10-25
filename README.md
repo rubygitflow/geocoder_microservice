@@ -57,4 +57,5 @@ $ bin/rake --tasks
 ```
 
 ## Author
-* it.Architect https://github.com/Oreol-Group
+* it.Architect https://github.com/rubygitflow
+* Inspired by [Evgeniy Fateev](https://github.com/psylone/geocoder-microservice)
