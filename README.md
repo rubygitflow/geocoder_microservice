@@ -1,4 +1,4 @@
-# Geocoder Microservice
+# Geocoder Microservice (asynchronous RabbitMq)
 Geocoder microservice from Ruby Microservices course
 
 It's set up so you can clone this repository and base your application on it:
@@ -41,9 +41,8 @@ $ RACK_ENV=test bin/console
 ```
 
 ## HTTP-requests to the app
-Use the URL port setting in `config/puma.rb` to manage multiple microservices in the same environment.
 ```bash
-$ 
+$ bin/app
 ```
 
 ## Run tests
