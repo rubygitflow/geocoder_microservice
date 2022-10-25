@@ -1,5 +1,5 @@
-# Geocoder Microservice (asynchronous RabbitMq)
-Geocoder microservice from Ruby Microservices course
+# Geocoder Microservice (asynchronous RabbitMQ)
+Geocoder microservice for RabbitMQ asynchronous [Ads Microservice](https://github.com/rubygitflow/ads_microservice/tree/rabbitmq_asynchronous) from Ruby Microservices course
 
 It's set up so you can clone this repository and base your application on it:
 ```bash
