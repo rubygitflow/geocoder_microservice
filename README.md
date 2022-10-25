@@ -3,7 +3,7 @@ Geocoder microservice from Ruby Microservices course
 
 It's set up so you can clone this repository and base your application on it:
 ```bash
-$ git clone git@github.com:rubygitflow/geocoder_microservice.git my_app --single-branch --branch rabbitmq_asynchronous && cd my_app && rm -r -f .git/
+$ git clone git@github.com:rubygitflow/geocoder_microservice.git app_geo --single-branch --branch rabbitmq_asynchronous && cd app_geo && rm -r -f .git/
 ```
 Initialize and configure a new Git repository (you need to have a [personal access token](https://github.com/settings/tokens)):
 ```bash
@@ -17,8 +17,8 @@ $ curl \
   -H "Accept: application/vnd.github+json" \
   -H "Authorization: Bearer <YOUR-TOKEN>" \
   https://api.github.com/user/repos \
-  -d'{"name":"my_app", "description":"Some information"}'
-$ git remote add origin git@github.com:USER_NAME/my_app.git 
+  -d'{"name":"app_geo", "description":"Some information"}'
+$ git remote add origin git@github.com:USER_NAME/app_geo.git 
 $ git add . && git commit -m 'init project'
 $ git push -u origin master
 ```
