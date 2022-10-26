@@ -15,6 +15,8 @@ gem 'activesupport', require: false
 gem 'dry-initializer'
 gem 'dry-validation'
 
+gem 'faraday'
+
 gem 'bunny'
 
 group :development do
