@@ -34,15 +34,11 @@ You can either set up configuration into `config/initializers/config.rb`, `confi
 
 ```bash
 $ bin/console
+$ bin/app
 ```
 or run the application with modified configuration using environment variables as well
 ```bash
 $ RACK_ENV=test bin/console
-```
-
-## HTTP-requests to the app
-```bash
-$ bin/app
 ```
 
 ## Run tests
