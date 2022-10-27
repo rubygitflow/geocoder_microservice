@@ -20,13 +20,9 @@ module ApplicationLoader
     require_file 'config/initializers/config'
   end
 
-  def init_db
-    require_file 'config/initializers/db'
-    require_file 'config/initializers/models'
-  end
+  def init_db; end
 
   def require_app
-    require_dir 'config/initializers'
     Unreloader.require(File.join(root, 'app/contracts'))
     Unreloader.require(File.join(root, 'app/services/basic_service.rb'))
     Unreloader.require(File.join(root, 'app/services'))
