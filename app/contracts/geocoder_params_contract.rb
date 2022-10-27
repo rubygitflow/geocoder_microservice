@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'dry/validation'
+require_relative 'application_contract'
 
-class GeocoderParamsContract < Dry::Validation::Contract
+class GeocoderParamsContract < ApplicationContract
   params do
     optional(:city).value(:string)
   end

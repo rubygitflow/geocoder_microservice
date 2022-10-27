@@ -3,4 +3,4 @@ en:
     errors:
       geocoder:
         city:
-          blank: 'Enter  city'
+          blank: 'Enter city'

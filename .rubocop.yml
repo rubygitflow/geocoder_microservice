@@ -38,3 +38,6 @@ Metrics/BlockLength:
   Exclude:
     - Rakefile
     - app/routes/**/*
+
+Style/ClassVars:
+  Enabled: false

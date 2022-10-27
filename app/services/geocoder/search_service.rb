@@ -22,7 +22,7 @@ module Geocoder
     end
 
     def data
-      @data ||= load_data!
+      @@data ||= load_data!
     end
 
     private
