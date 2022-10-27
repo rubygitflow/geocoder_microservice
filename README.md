@@ -3,7 +3,7 @@ Geocoder microservice from Ruby Microservices course
 
 It's set up so you can clone this repository and base your application on it:
 ```bash
-$ git clone git@github.com:Oreol-Group/roda_sequel_rspec_config.git my_app && cd my_app && rake "setup[MyApp]"
+$ git clone git@github.com:rubygitflow/geocoder_microservice.git app_geo && cd app_geo && rm -r -f .git/
 ```
 Initialize and configure a new Git repository (you need to have a [personal access token](https://github.com/settings/tokens)):
 ```bash
@@ -17,8 +17,8 @@ $ curl \
   -H "Accept: application/vnd.github+json" \
   -H "Authorization: Bearer <YOUR-TOKEN>" \
   https://api.github.com/user/repos \
-  -d'{"name":"my_app", "description":"Some information"}'
-$ git remote add origin git@github.com:USER_NAME/my_app.git 
+  -d'{"name":"app_geo", "description":"Some information"}'
+$ git remote add origin git@github.com:USER_NAME/app_geo.git 
 $ git add . && git commit -m 'init project'
 $ git push -u origin master
 ```
@@ -61,5 +61,5 @@ $ bin/rake --tasks
 ```
 
 ## Author
-* it.Architect https://github.com/Oreol-Group/roda_sequel_rspec_config
-* Inspired by [Jeremy Evans](https://github.com/jeremyevans/roda-sequel-stack) and [Evgeniy Fateev](https://github.com/psylone/ads-microservice)
+* it.Architect https://github.com/rubygitflow
+* Inspired by [Jeremy Evans](https://github.com/jeremyevans/roda-sequel-stack) and [Evgeniy Fateev](https://github.com/psylone/geocoder-microservice)
