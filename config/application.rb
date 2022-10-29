@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 class Application
-  def self.root
-    ApplicationLoader.root
-  end
+  class << self
+    attr_accessor :logger
 
-  def self.environment
-    ENV.fetch('RACK_ENV').to_sym
+    def root
+      ApplicationLoader.root
+    end
+
+    def environment
+      ENV.fetch('RACK_ENV').to_sym
+    end
   end
 end
