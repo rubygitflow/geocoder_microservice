@@ -4,7 +4,8 @@ require_relative '../application'
 
 dev = ENV['RACK_ENV'] == 'development'
 
-logger_path = dev ? $stdout : "#{Application.root}/#{Settings.logger.path}"
+#             dev ? $stdout : 
+logger_path = "#{Application.root}/#{Settings.logger.path}"
 
 logger = Ougai::Logger.new(
   logger_path,
