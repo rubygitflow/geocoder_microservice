@@ -39,6 +39,7 @@ $ bin/console
 or run the application with modified configuration using environment variables as well
 ```bash
 $ RACK_ENV=test bin/console
+$ LOG_SERVICE=stdout bin/app
 ```
 
 ## Run tests

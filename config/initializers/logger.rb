@@ -2,17 +2,25 @@
 
 require_relative '../application'
 
-dev = ENV['RACK_ENV'] == 'development'
+def stdout?
+  ENV['LOG_SERVICE'] == 'stdout'
+end
 
-#             dev ? $stdout : 
-logger_path = "#{Application.root}/#{Settings.logger.path}"
+logger_path = case ENV['LOG_SERVICE']
+              when 'stdout'
+                $stdout
+              when nil
+                "#{Application.root}/#{Settings.logger.path}"
+              else
+                "#{Application.root}/#{ENV['LOG_SERVICE']}"
+              end
 
 logger = Ougai::Logger.new(
   logger_path,
   level: Settings.logger.level
 )
 
-logger.formatter = Ougai::Formatters::Readable.new if dev
+logger.formatter = Ougai::Formatters::Readable.new if stdout?
 
 logger.before_log = lambda do |data|
   data[:service] = { name: Settings.app.name }
