@@ -1,9 +1,9 @@
-# Geocoder Microservice (synchronous RabbitMQ)
-Geocoder microservice for RabbitMQ synchronous [Ads Microservice](https://github.com/rubygitflow/ads_microservice/tree/rabbitmq_synchro) from Ruby Microservices course
+# Geocoder Microservice (on RabbitMQ)
+Geocoder microservice for [Ads Microservice](https://github.com/rubygitflow/ads_microservice/tree/logging) on RabbitMQ from Ruby Microservices course
 
 It's set up so you can clone this repository and base your application on it:
 ```bash
-$ git clone git@github.com:rubygitflow/geocoder_microservice.git app_geo --single-branch --branch rabbitmq_synchro && cd app_geo && rm -r -f .git/
+$ git clone git@github.com:rubygitflow/geocoder_microservice.git app_geo --single-branch --branch logging && cd app_geo && rm -r -f .git/
 ```
 Initialize and configure a new Git repository (you need to have a [personal access token](https://github.com/settings/tokens)):
 ```bash
@@ -24,6 +24,14 @@ $ git push -u origin master
 ```
 For more details, see the [github docs](https://docs.github.com/en/rest/repos/repos#create-a-repository-for-the-authenticated-user)
 
+Add config file `.env.rb` with correct data:
+```ruby
+ENV['RABBITMQ_HOST']='127.0.0.1'
+ENV['RABBITMQ_USER']='RabbitMQ_UserName'
+ENV['RABBITMQ_PASSWORD']='RabbitMQ_Password'
+ENV['ADS_URL'] = 'http://localhost:3001/api/v1'
+```
+
 ## Environment setup
 ```bash
 $ bundle install
@@ -33,16 +41,13 @@ $ bundle install
 You can either set up configuration into `config/initializers/config.rb`, `config/settings/*.yml` and `config/settings.yml` or `config/settings.local.yml` before running
 
 ```bash
+$ bin/app
 $ bin/console
 ```
 or run the application with modified configuration using environment variables as well
 ```bash
 $ RACK_ENV=test bin/console
-```
-
-## HTTP-requests to the app
-```bash
-$ bin/app
+$ LOG_SERVICE=stdout bin/app
 ```
 
 ## Run tests

@@ -19,11 +19,14 @@ gem 'faraday'
 
 gem 'bunny'
 
+gem 'ougai', require: 'ougai'
+
 group :development do
   gem 'pry'
 end
 
 group :development, :test do
+  gem 'amazing_print'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
 end

@@ -38,3 +38,10 @@ Metrics/BlockLength:
   Exclude:
     - Rakefile
     - app/routes/**/*
+
+Style/ClassVars:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - .env.rb

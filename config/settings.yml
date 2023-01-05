@@ -1,2 +1,4 @@
+app:
+  name: geocoder
 rabbitmq:
   consumer_pool: 10
